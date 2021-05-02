@@ -59,7 +59,7 @@ const onCountyChange = async (value) => {
   console.log(`selected county ${value}`);
   setCommitCounty(value)
   setLoading(true)
-  console.log("commitCounty", commitCounty)
+  // console.log("commitCounty", commitCounty) no value in here
 }
 
 function onBlur(value) {
@@ -137,7 +137,7 @@ function onSearch(val) {
 
   <Col span={1} order={5}>
     
-  <FindClosest/>
+  {/* <FindClosest/> */}
  
   </Col>
 
