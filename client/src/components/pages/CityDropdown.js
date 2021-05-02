@@ -76,13 +76,10 @@ function onSearch(val) {
 }
 
 
-// useEffect(()=>{
-
-// })
 
   return (
     <>
-    <Row>
+    <Row >
     <Col span={6} order={3}>
 
     <Select
@@ -94,9 +91,9 @@ function onSearch(val) {
     onFocus={onFocus}
     onBlur={onBlur}
     onSearch={onSearch}
-    // filterOption={(input, option) =>
-    //   option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-    // }
+    filterOption={(input, option) =>
+      option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+    }
   >
   {cities.map((c)=>( 
       <Option key={c._id} value={c.city}>{c.city}</Option>

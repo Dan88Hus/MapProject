@@ -15,7 +15,6 @@ class MapConfig extends Component {
     zoom: 14
   };
 
-
  
   render() {
     return (
@@ -23,10 +22,11 @@ class MapConfig extends Component {
       <div style={{ height: '100vh', width: '100%' }}>
         <GoogleMapReact
           bootstrapURLKeys={{ key: "AIzaSyBiEdWxbdHakiNJpHy5op67-VGF2Spp1L4" }}
+          // key value is hard coded, usually it can be hiden under .env file
           defaultCenter={this.props.center}
           defaultZoom={this.props.zoom}
         >
-          <AnyReactComponent
+          <AnyReactComponent style={{color: "red"}}
             lat={this.props.userLat}
             lng={this.props.userLon}
             text="User Input Coordinate"

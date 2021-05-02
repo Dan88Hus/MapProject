@@ -7,7 +7,7 @@ import CityDropdown from './CityDropdown'
 const ContentPage = () => {
   
   return (
-    <div>
+    <div className="container-fluid">
     <Divider orientation="left"></Divider>
 
     <CityDropdown/>
