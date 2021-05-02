@@ -4,6 +4,7 @@ import {listAllCities} from '../../functions/Cities'
 import {countyList} from '../../functions/County'
 import CoordinatesInput from './CoordinatesInput'
 import FindClosest from './FindClosest'
+import MapConfig from './MapConfig'
 
 
 // import { DownOutlined } from '@ant-design/icons';
@@ -149,7 +150,20 @@ function onSearch(val) {
   <br></br>
   commitCounty
   {JSON.stringify(commitCounty,null,4)} */}
+    <div>
+     Selected City: {selectedCity}
+     <hr/>
+     Selected County: {commitCounty}
+    </div>
+    <br></br>
+    <hr></hr>
+  <Row>
+<Col span={24} order={1}>
+  {/* Google Map will be shown Here , if its not shown we can do span size dynamically*/}
+  <MapConfig/>
+</Col>
 
+  </Row>
     </>
   )
 }

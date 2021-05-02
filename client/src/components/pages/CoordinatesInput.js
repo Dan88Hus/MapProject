@@ -1,19 +1,35 @@
 import React, { useState, useEffect } from 'react';
 import { Form, Input, Button } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
+import {closest} from '../../functions/SliceFilter'
+
 
 
 
 const CoordinatesInput = () => {
   const [form] = Form.useForm();
   const [forceUpdate, setForceUpdate] = useState({}); // To disable submit button at the beginning.
+  const [commitSplittedLatCor, setCommitSplittedLatCor] = useState()
+  const [commitSplittedLonCor, setCommitSplittedLonCor] = useState()
 
   useEffect(() => {
     setForceUpdate({});
   }, []);
 
-  const onFinish = (values) => {
+  const onFinish = async (values) => {
     console.log('Finish:', values);
+    let splittedCoordinates = values.Coordinates.split(',')
+    console.log(splittedCoordinates)
+    let splittedLatCor = splittedCoordinates[0] 
+    let splittedLonCor = splittedCoordinates[1]
+    // console.log(splittedLonCor)
+    setCommitSplittedLatCor(splittedLatCor)
+    setCommitSplittedLonCor(splittedLonCor)
+    await closest(splittedCoordinates[0], splittedCoordinates[1])
+    .then((res)=>{
+      console.log("CoordinatesInput RES", res.data)
+    })
+
   };
 
   return (
@@ -32,6 +48,7 @@ const CoordinatesInput = () => {
         // prefix={<UserOutlined className="site-form-item-icon" />}
         />
       </Form.Item>
+      <br></br>
       
       <Form.Item shouldUpdate>
         {() => (
@@ -48,6 +65,10 @@ const CoordinatesInput = () => {
         )}
       </Form.Item>
     </Form>
+
+    User input Lat: {commitSplittedLatCor} 
+    <br></br>
+    User input Lon: {commitSplittedLonCor}
       
     </div>
   )
