@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Form, Input, Button } from 'antd';
-import { UserOutlined, LockOutlined } from '@ant-design/icons';
+// import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import {closest} from '../../functions/SliceFilter'
 
 
@@ -25,12 +25,16 @@ const CoordinatesInput = () => {
     // console.log(splittedLonCor)
     setCommitSplittedLatCor(splittedLatCor)
     setCommitSplittedLonCor(splittedLonCor)
+    localStorage.setItem('UserLat', splittedCoordinates[0] );
+    localStorage.setItem('UserLon', splittedCoordinates[1]);
     await closest(splittedCoordinates[0], splittedCoordinates[1])
     .then((res)=>{
       console.log("CoordinatesInput RES", res.data)
     })
 
   };
+
+
 
   return (
     <div>
@@ -69,6 +73,7 @@ const CoordinatesInput = () => {
     User input Lat: {commitSplittedLatCor} 
     <br></br>
     User input Lon: {commitSplittedLonCor}
+  
       
     </div>
   )

@@ -4,13 +4,18 @@ import GoogleMapReact from 'google-map-react';
 const AnyReactComponent = ({ text }) => <div>{text}</div>;
  
 class MapConfig extends Component {
+  
   static defaultProps = {
     center: {
       lat: 39.92077,
       lng: 32.85411
     },
+    userLat: localStorage.getItem("UserLat"),
+    userLon: localStorage.getItem("UserLon"),
     zoom: 14
   };
+
+
  
   render() {
     return (
@@ -22,9 +27,9 @@ class MapConfig extends Component {
           defaultZoom={this.props.zoom}
         >
           <AnyReactComponent
-            lat={59.955413}
-            lng={30.337844}
-            text="My Marker"
+            lat={this.props.userLat}
+            lng={this.props.userLon}
+            text="User Input Coordinate"
           />
         </GoogleMapReact>
       </div>
