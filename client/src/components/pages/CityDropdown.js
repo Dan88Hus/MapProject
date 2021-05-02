@@ -2,6 +2,8 @@ import React, {useState, useEffect} from 'react'
 import { Row, Col } from 'antd';
 import {listAllCities} from '../../functions/Cities'
 import {countyList} from '../../functions/County'
+import CoordinatesInput from './CoordinatesInput'
+import FindClosest from './FindClosest'
 
 
 // import { DownOutlined } from '@ant-design/icons';
@@ -102,7 +104,7 @@ function onSearch(val) {
   </Select>
   </Col>
 
-  <Col span={6} order={3}>
+  <Col span={6} order={4}>
   {loading && (
     <Select
     showSearch
@@ -124,12 +126,29 @@ function onSearch(val) {
   </Select>
   )}
   </Col>
+
+
+  <Col span={4} order={5}>
+    
+  <CoordinatesInput/>
+ 
+  </Col>
+
+
+  <Col span={1} order={5}>
+    
+  <FindClosest/>
+ 
+  </Col>
+
+  
+
   </Row>
-  selectableCounty
+  {/* selectableCounty
   {JSON.stringify(selectedCounty,null,4)}
   <br></br>
   commitCounty
-  {JSON.stringify(commitCounty,null,4)}
+  {JSON.stringify(commitCounty,null,4)} */}
 
     </>
   )
